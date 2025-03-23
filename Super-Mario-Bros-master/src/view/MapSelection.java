@@ -40,7 +40,6 @@ public class MapSelection {
     private void getMaps(){
         //TODO: read from file
         maps.add("Map 1.png");
-        maps.add("Map 2.png");
     }
 
     private MapSelectionItem[] createItems(ArrayList<String> maps){

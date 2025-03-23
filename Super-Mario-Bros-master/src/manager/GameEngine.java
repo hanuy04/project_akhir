@@ -204,16 +204,6 @@ public class GameEngine implements Runnable {
         }
     }
 
-    private void selectOption(boolean selectUp) {
-        startScreenSelection = startScreenSelection.select(selectUp);
-    }
-
-    private void startGame() {
-        if (gameStatus != GameStatus.GAME_OVER) {
-            setGameStatus(GameStatus.MAP_SELECTION);
-        }
-    }
-
     private void pauseGame() {
         if (gameStatus == GameStatus.RUNNING) {
             setGameStatus(GameStatus.PAUSED);

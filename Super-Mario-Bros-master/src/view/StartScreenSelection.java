@@ -11,10 +11,6 @@ public enum StartScreenSelection {
     public StartScreenSelection getSelection(int number){
         if(number == 0)
             return START_GAME;
-        else if(number == 1)
-            return VIEW_HELP;
-        else if(number == 2)
-            return VIEW_ABOUT;
         else return null;
     }
 

@@ -14,7 +14,7 @@ public class UIManager extends JPanel{
 
     private GameEngine engine;
     private Font gameFont;
-    private BufferedImage startScreenImage, aboutScreenImage, helpScreenImage, gameOverScreen;
+    private BufferedImage startScreenImage, gameOverScreen;
     private BufferedImage heartIcon;
     private BufferedImage coinIcon;
     private BufferedImage selectIcon;
@@ -35,8 +35,6 @@ public class UIManager extends JPanel{
         this.coinIcon = loader.getSubImage(sprite, 1, 5, 48, 48);
         this.selectIcon = loader.loadImage("/select-icon.png");
         this.startScreenImage = loader.loadImage("/start-screen.png");
-        this.helpScreenImage = loader.loadImage("/help-screen.png");
-        this.aboutScreenImage = loader.loadImage("/about-screen.png");
         this.gameOverScreen = loader.loadImage("/game-over.png");
 
         try {
@@ -57,15 +55,6 @@ public class UIManager extends JPanel{
 
         if(gameStatus == GameStatus.START_SCREEN){
             drawStartScreen(g2);
-        }
-        else if(gameStatus == GameStatus.MAP_SELECTION){
-            drawMapSelectionScreen(g2);
-        }
-        else if(gameStatus == GameStatus.ABOUT_SCREEN){
-            drawAboutScreen(g2);
-        }
-        else if(gameStatus == GameStatus.HELP_SCREEN){
-            drawHelpScreen(g2);
         }
         else if(gameStatus == GameStatus.GAME_OVER){
             drawGameOverScreen(g2);
@@ -105,14 +94,6 @@ public class UIManager extends JPanel{
         String displayedStr = "YOU WON!";
         int stringLength = g2.getFontMetrics().stringWidth(displayedStr);
         g2.drawString(displayedStr, (getWidth()-stringLength)/2, getHeight()/2);
-    }
-
-    private void drawHelpScreen(Graphics2D g2) {
-        g2.drawImage(helpScreenImage, 0, 0, null);
-    }
-
-    private void drawAboutScreen(Graphics2D g2) {
-        g2.drawImage(aboutScreenImage, 0, 0, null);
     }
 
     private void drawGameOverScreen(Graphics2D g2) {
@@ -175,10 +156,6 @@ public class UIManager extends JPanel{
 
     public String selectMapViaMouse(Point mouseLocation) {
         return mapSelection.selectMap(mouseLocation);
-    }
-
-    public String selectMapViaKeyboard(int index){
-        return mapSelection.selectMap(index);
     }
 
     public int changeSelectedMap(int index, boolean up){
