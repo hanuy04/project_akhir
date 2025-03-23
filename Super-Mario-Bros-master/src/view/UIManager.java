@@ -161,7 +161,7 @@ public class UIManager extends JPanel{
     private void drawStartScreen(Graphics2D g2){
         int row = engine.getStartScreenSelection().getLineNumber();
         g2.drawImage(startScreenImage, 0, 0, null);
-        g2.drawImage(selectIcon, 375, row * 70 + 440, null);
+        g2.drawImage(selectIcon, 450, 500, null);
     }
 
     private void drawMapSelectionScreen(Graphics2D g2){

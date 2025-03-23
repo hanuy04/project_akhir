@@ -76,10 +76,7 @@ public class GameEngine implements Runnable {
     }
 
     public void selectMapViaKeyboard(){
-        String path = uiManager.selectMapViaKeyboard(selectedMap);
-        if (path != null) {
-            createMap(path);
-        }
+        createMap("Map 1.png");
     }
 
     public void changeSelectedMap(boolean up){
@@ -174,28 +171,10 @@ public class GameEngine implements Runnable {
 
         if (gameStatus == GameStatus.START_SCREEN) {
             if (input == ButtonAction.SELECT && startScreenSelection == StartScreenSelection.START_GAME) {
-                startGame();
-            } else if (input == ButtonAction.SELECT && startScreenSelection == StartScreenSelection.VIEW_ABOUT) {
-                setGameStatus(GameStatus.ABOUT_SCREEN);
-            } else if (input == ButtonAction.SELECT && startScreenSelection == StartScreenSelection.VIEW_HELP) {
-                setGameStatus(GameStatus.HELP_SCREEN);
-            } else if (input == ButtonAction.GO_UP) {
-                selectOption(true);
-            } else if (input == ButtonAction.GO_DOWN) {
-                selectOption(false);
-            }
-        }
-        else if(gameStatus == GameStatus.MAP_SELECTION){
-            if(input == ButtonAction.SELECT){
                 selectMapViaKeyboard();
-            }
-            else if(input == ButtonAction.GO_UP){
-                changeSelectedMap(true);
-            }
-            else if(input == ButtonAction.GO_DOWN){
-                changeSelectedMap(false);
-            }
-        } else if (gameStatus == GameStatus.RUNNING) {
+            } 
+        }
+        else if (gameStatus == GameStatus.RUNNING) {
             Mario mario = mapManager.getMario();
             if (input == ButtonAction.JUMP) {
                 mario.jump(this);
